@@ -18,8 +18,8 @@ Build Production
 ================
 
 ```
-#Edit Dockerfile with your hosting DNS
-sed -i 's/localhost.mytrezor.com/CHANGEMETOYOURDOMAIN.com/g' ./prod/Dockerfile
+# Edit Dockerfile with your hosting DNS
+# in the /prod/Dockerfile replace "localhost.mytrezor.com" with your domain
 sudo docker build -t docker_prod ./prod/
 ```
 
