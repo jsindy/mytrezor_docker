@@ -9,7 +9,7 @@ Build Development
 =================
 
 ```
-sudo docker build -t docker_dev ./dev/
+sudo docker build -t --no-cache docker_dev ./dev/
 ```
 
 Run Production
