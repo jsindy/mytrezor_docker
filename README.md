@@ -20,7 +20,7 @@ Build Production
 ```
 # Edit Dockerfile with your hosting DNS
 # in _TWO_ places in the /prod/Dockerfile replace "localhost.mytrezor.com" with your domain
-sudo docker build -t docker_prod ./prod/
+sudo docker build --no-cache -t docker_prod ./prod/
 ```
 
 Run Production
