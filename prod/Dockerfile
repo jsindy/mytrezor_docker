@@ -20,8 +20,8 @@ USER mytrezor
 
 RUN cd /home/mytrezor/
 RUN git clone https://github.com/trezor/webwallet.git
-RUN git checkout stable
 WORKDIR /home/mytrezor/webwallet
+RUN git checkout stable
 RUN git submodule update --recursive --init
 RUN npm config set prefix /usr/local
 RUN bower install
