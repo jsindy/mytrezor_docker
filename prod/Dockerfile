@@ -20,18 +20,14 @@ USER mytrezor
 
 RUN cd /home/mytrezor/
 RUN git clone https://github.com/trezor/webwallet.git
-#RUN cd webwallet
+RUN git checkout stable
 WORKDIR /home/mytrezor/webwallet
 RUN git submodule update --recursive --init
 RUN npm config set prefix /usr/local
 RUN bower install
-# bower --allow-root install
 RUN npm install
 RUN mv app/scripts/config.sample.js app/scripts/config.js
 RUN grunt build
 RUN cp -r app/data dist/data
 RUN sed 's/https:\/\/mytrezor.com/https:\/\/localhost.mytrezor.com/g' /home/mytrezor/webwallet/app/scripts/config.js
-#RUN grunt server
-
-# Define default command.
 USER mytrezor
