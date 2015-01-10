@@ -12,7 +12,7 @@ WORKDIR /root
 RUN apt-get update; apt-get install -y git npm nodejs-legacy vim
 RUN adduser --disabled-password --gecos "" mytrezor
 RUN npm install -g grunt-cli bower
-RUN echo '127.0.0.1	localhost.mytrezor.com >> /etc/hosts'
+RUN echo -e '127.0.0.1	localhost.mytrezor.com' | tee -a /etc/hosts
 
 ENV HOME /home/mytrezor
 WORKDIR /home/mytrezor
@@ -20,7 +20,9 @@ USER mytrezor
 
 RUN cd /home/mytrezor/
 RUN git clone https://github.com/trezor/webwallet.git
+
 WORKDIR /home/mytrezor/webwallet
+
 RUN git checkout stable
 RUN sed -i 's/git@github.com:/https:\/\/github.com\//g' .gitmodules
 RUN git submodule update --recursive --init
@@ -31,4 +33,5 @@ RUN mv app/scripts/config.sample.js app/scripts/config.js
 RUN grunt build
 RUN cp -r app/data dist/data
 RUN sed 's/https:\/\/mytrezor.com/https:\/\/localhost.mytrezor.com/g' /home/mytrezor/webwallet/app/scripts/config.js
+
 USER mytrezor
