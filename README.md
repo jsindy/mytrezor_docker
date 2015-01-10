@@ -27,7 +27,7 @@ Run Production
 ==============
 
 ```
-sudo docker run -p 80:8000 -d mytrezor_prod grunt server
+sudo docker run -p 80:9000 -d mytrezor_prod grunt server
 ```
 
 http://YOURDOMAIN.COM/
