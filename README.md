@@ -9,7 +9,7 @@ Run Development
 ===============
 
 ```
-sudo docker run -p 8000:8000 -d mytrezor_dev grunt server
+sudo docker run -p 8000:8000 -it mytrezor_dev grunt server
 ```
 
 http://localhost:8000/
