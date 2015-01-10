@@ -9,7 +9,7 @@ ENV HOME /root
 
 WORKDIR /root
 
-RUN apt-get update; apt-get install -y git npm nodejs-legacy vim tee
+RUN apt-get update; apt-get install -y git npm nodejs-legacy vim
 RUN adduser --disabled-password --gecos "" mytrezor
 RUN npm install -g grunt-cli bower
 RUN echo -e '127.0.0.1	localhost.mytrezor.com' | sudo tee -a /etc/hosts
