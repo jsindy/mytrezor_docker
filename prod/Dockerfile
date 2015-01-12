@@ -23,14 +23,11 @@ RUN git clone https://github.com/trezor/webwallet.git
 
 WORKDIR /home/mytrezor/webwallet
 
-RUN git checkout stable
-RUN sed -i 's/git@github.com:/https:\/\/github.com\//g' .gitmodules
+RUN revision=$(curl -k https://mytrezor.com/revision.txt); git checkout $revision
 RUN git submodule update --recursive --init
 RUN npm config set prefix /usr/local
 RUN bower install
 RUN npm install
 RUN mv app/scripts/config.sample.js app/scripts/config.js
-RUN grunt build
-RUN cp -r app/data dist/data
 
 USER mytrezor
