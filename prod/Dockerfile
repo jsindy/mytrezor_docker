@@ -29,5 +29,6 @@ RUN npm config set prefix /usr/local
 RUN bower install
 RUN npm install
 RUN mv app/scripts/config.sample.js app/scripts/config.js
+RUN sed -i 's/https:\/\/mytrezor.com/https:\/\/localhost.mytrezor.com/g' app/scripts/config.js
 
 USER mytrezor
